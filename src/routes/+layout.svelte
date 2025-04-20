@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import '../app.css';
+	import Footer from '$lib/components/Footer.svelte';
+	import Header from '$lib/components/Header.svelte';
 
 	let { children } = $props();
 
@@ -26,4 +28,18 @@
 	});
 </script>
 
-{@render children()}
+<!-- main wrapper -->
+<div class="flex h-full flex-grow items-center justify-center">
+	<!-- phone wrapper -->
+	<div class="flex h-full w-[28rem] flex-col border-x max-md:w-full max-md:border-none">
+		<div>
+			<Header />
+		</div>
+		<div class="flex-grow">
+			{@render children()}
+		</div>
+		<div>
+			<Footer />
+		</div>
+	</div>
+</div>
