@@ -3,6 +3,8 @@
 	import '../app.css';
 	import Footer from '$lib/components/Footer.svelte';
 	import Header from '$lib/components/Header.svelte';
+	import { forceScreenSize } from '$lib/utils/forceScreenSize';
+	import { getGlobalState } from '$lib/states/global.svelte';
 
 	let { children } = $props();
 
@@ -24,9 +26,14 @@
 	}
 
 	onMount(() => {
+		forceScreenSize(100, 800);
 		detectSWUpdate();
 	});
 </script>
+
+{#if getGlobalState().account.current.id}
+	<!--  -->
+{/if}
 
 <!-- main wrapper -->
 <div class="flex h-full flex-grow items-center justify-center">
