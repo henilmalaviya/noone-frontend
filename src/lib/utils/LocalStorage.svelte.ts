@@ -69,7 +69,7 @@ export class LocalStorage<T> {
 		};
 
 		if ($effect.tracking()) {
-			$effect(() => {
+			$effect.root(() => {
 				if (this.#listeners === 0) {
 					window.addEventListener('storage', this.#handler);
 				}

@@ -10,13 +10,9 @@ const ASSETS = [...prerendered, ...build, ...files];
 
 // install service worker
 self.addEventListener('install', (event) => {
-	console.log('Service worker installing...');
 	event.waitUntil(
 		self.skipWaiting().then(async () => {
-			console.log('Service worker installed');
-
 			const cache = await caches.open(CACHE);
-			console.log('Cache opened', cache);
 			await cache.addAll(ASSETS);
 		})
 	);
@@ -26,10 +22,8 @@ self.addEventListener('install', (event) => {
 self.addEventListener('activate', (event) => {
 	async function deleteOldCaches() {
 		const keys = await caches.keys();
-		console.log('Old caches deleted', keys);
 		for (const key of keys) {
 			if (key !== CACHE) {
-				console.log('Deleting old cache', key);
 				await caches.delete(key);
 			}
 		}
