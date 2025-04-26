@@ -2,7 +2,6 @@
 	import { goto } from '$app/navigation';
 	import { Button } from '$lib/components/ui/button';
 	import { globalState } from '$lib/states/global.svelte';
-	import { fly } from 'svelte/transition';
 
 	$effect(() => {
 		if (globalState.hasOnboardingCompleted === true) {
@@ -11,10 +10,10 @@
 	});
 </script>
 
-<div class="flex flex-grow flex-col items-center gap-4 px-4 py-16">
-	<div class="flex flex-col items-center gap-4" out:fly={{}}>
+<div class="flex flex-grow flex-col items-center gap-4 px-8 py-16">
+	<div class="flex flex-col items-center gap-4">
 		<div class="h-fit rounded-full bg-zinc-100 p-4">
-			<img src="/favicon.svg" alt="logo" class="h-28 w-28" />
+			<img src="/favicon.svg" alt="logo" class="h-24 w-24" />
 		</div>
 
 		<h1 class="text-2xl font-bold">Welcome to <span class="">NoOne</span></h1>

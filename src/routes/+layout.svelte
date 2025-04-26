@@ -6,7 +6,7 @@
 	import { forceScreenSize } from '$lib/utils/forceScreenSize';
 	import { globalState } from '$lib/states/global.svelte';
 	import { goto } from '$app/navigation';
-	import { page } from '$app/state';
+	import { navigating, page } from '$app/state';
 
 	let { children } = $props();
 
@@ -31,7 +31,7 @@
 		});
 	}
 
-	$effect(() => {
+	onMount(() => {
 		if (
 			['/onboarding', '/account/create', '/account/login'].includes(page.url.pathname) === false &&
 			globalState.hasOnboardingCompleted === false
@@ -42,6 +42,14 @@
 		setTimeout(() => {
 			globalState.loading = false;
 		}, 500);
+	});
+
+	$effect(() => {
+		if (navigating.to) {
+			globalState.loading = true;
+		} else {
+			globalState.loading = false;
+		}
 	});
 
 	onMount(() => {
