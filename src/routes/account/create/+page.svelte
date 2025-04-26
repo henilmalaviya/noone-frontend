@@ -100,7 +100,7 @@
 
 			<Button
 				disabled={!generatedAccountNumber}
-				href="/accounts/login"
+				href="/account/login"
 				variant="secondary"
 				class="font-semibold">Login with account number</Button
 			>
